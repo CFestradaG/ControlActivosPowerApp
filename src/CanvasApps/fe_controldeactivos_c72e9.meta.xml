@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>fe_controldeactivos_c72e9</Name>
+  <AppVersion>2026-09-30T21:54:07Z</AppVersion>
+  <Status>Ready</Status>
+  <CreatedByClientVersion>3.26092.12.0</CreatedByClientVersion>
+  <MinClientVersion>3.26092.12.0</MinClientVersion>
+  <Tags>{"primaryDeviceWidth":"640","primaryDeviceHeight":"640","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.26092.12","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false","m365CopilotSettingValue":"0","sienaVersion":"20260912T013134Z-3.26084.8.0"}</Tags>
+  <IsCdsUpgraded>0</IsCdsUpgraded>
+  <GalleryItemId xsi:nil="true"></GalleryItemId>
+  <BackgroundColor>rgba(255, 255, 255, 1)</BackgroundColor>
+  <DisplayName>Control de Activos</DisplayName>
+  <Description>Optimize asset management by enabling users to register, track, and monitor assets across locations. Analyze asset data by category and generate documentation for transfers and assignments. Enhance oversight of inventory and user responsibilities for improved organizational control.</Description>
+  <CommitMessage>Save app with description provided in publish dialog.</CommitMessage>
+  <Publisher xsi:nil="true"></Publisher>
+  <AuthorizationReferences>[]</AuthorizationReferences>
+  <ConnectionReferences>{"75c0254e-2af8-4904-ba29-d4312979de38":{"id":"/providers/microsoft.powerapps/apis/shared_sharepointonline","displayName":"SharePoint","iconUri":"https://static.powerapps.com/resource/ppcr/releases/v1.0.1827/1.0.1827.4913/sharepointonline/icon.png","dataSources":["Activos","Bodega_usuario","Movimientos","Modelo_Activos"],"dependencies":[],"dependents":["65b93e28-e7b0-45bc-ac04-be9f709355bd"],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{"https://olmecaguatemala.sharepoint.com/sites/ServiciosdeTecnologa":{"dataSources":{"Activos":{"tableName":"689746de-c3b7-43ad-b1db-d0248cf5d881"},"Bodega_usuario":{"tableName":"37a0c76c-b3b0-4218-b433-47e973941124"},"Movimientos":{"tableName":"98b910b6-ac8d-4616-8d45-79d1eca3ed90"},"Modelo_Activos":{"tableName":"729370c4-6136-474d-8c26-c7003d315ddc"}}}},"apiTier":"Standard","actions":["providers/PowerPlatform.Governance/Operations/Read","providers/PowerPlatform.Governance/Operations/Write"]},"65b93e28-e7b0-45bc-ac04-be9f709355bd":{"id":"/providers/microsoft.powerapps/apis/shared_logicflows","displayName":"Flujos lógicos","iconUri":"https://conn-afd-prod-endpoint-bmc9bqahasf3grgk.b01.azurefd.net/v1.0.1766/1.0.1766.4330/logicflows/icon.png","dataSources":["Formato"],"dependencies":["75c0254e-2af8-4904-ba29-d4312979de38"],"dependents":[],"parameterHints":{"workflowName":{"value":"e7438c87-69e4-42a7-98e0-376fc8999a7b"},"workflowEntityId":{},"workflowDisplayName":{"value":"Formato"},"75c0254e-2af8-4904-ba29-d4312979de38":{"value":"shared_sharepointonline"}},"parameterHintsV2":{"workflowName":{"value":"e7438c87-69e4-42a7-98e0-376fc8999a7b"},"workflowEntityId":{},"workflowDisplayName":{"value":"Formato"},"shared_sharepointonline":{"value":"75c0254e-2af8-4904-ba29-d4312979de38"}},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["Run"]},"d12cd852-bf3d-4776-868c-14088e2f96a1":{"id":"/providers/microsoft.powerapps/apis/shared_excelonlinebusiness","displayName":"Excel Online (Empresas)","iconUri":"https://static.powerapps.com/resource/ppcr/releases/v1.0.1826/1.0.1826.4868/excelonlinebusiness/icon.png","dataSources":["Acceso","Sede","Empresa"],"dependencies":[],"dependents":[],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{"groups%252Fc9cc2087-4b32-4deb-9819-aafa067c31e1,b%2521yrg_IoR4m0-qTM2KNuPiKhsjQKMAAulKrXouZaoE0u7mWAnkEEJgTokqmRULm44k,01LJTVE5NW4LMVNOOXWVFJU7DFHMJ2ANPN":{"dataSources":{"Acceso":{"tableName":"{FB5A3AD7-E1CE-4A33-AC49-2B66B5EA7F87}"},"Sede":{"tableName":"{A819BA79-3D44-4B5F-993C-21FDA8C3B3B8}"},"Empresa":{"tableName":"{22648149-10BE-4960-821F-01134490554E}"}}}},"apiTier":"Standard","actions":["providers/PowerPlatform.Governance/Operations/Read"]}}</ConnectionReferences>
+  <DatabaseReferences>{}</DatabaseReferences>
+  <AppComponents>[]</AppComponents>
+  <AppComponentDependencies>[]</AppComponentDependencies>
+  <CanConsumeAppPass>1</CanConsumeAppPass>
+  <CanvasAppType>0</CanvasAppType>
+  <BypassConsent>0</BypassConsent>
+  <AdminControlBypassConsent>0</AdminControlBypassConsent>
+  <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <CdsDependencies>{"cdsdependencies":[]}</CdsDependencies>
+  <IsCustomizable>1</IsCustomizable>
+  <BackgroundImageUri>/CanvasApps/fe_controldeactivos_c72e9_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/fe_controldeactivos_c72e9_DocumentUri.msapp</DocumentUri>
+</CanvasApp>

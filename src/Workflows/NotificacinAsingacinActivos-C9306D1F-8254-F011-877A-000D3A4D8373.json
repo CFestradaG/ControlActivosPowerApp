@@ -1,0 +1,114 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "api": {
+          "name": "shared_sharepointonline"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "Cr8ce7f_shared_sharepointonline_4c64e5def4794b61934fcd622b16bef3"
+        },
+        "runtimeSource": "embedded"
+      },
+      "shared_office365-1": {
+        "api": {
+          "name": "shared_office365"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedoffice365_834cb"
+        },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "sharepoint.site": {
+          "defaultValue": "",
+          "type": "String"
+        },
+        "sharepoint.list": {
+          "defaultValue": "",
+          "type": "String"
+        }
+      },
+      "triggers": {
+        "When_an_item_is_created": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://olmecaguatemala.sharepoint.com/sites/ServiciosdeTecnologa",
+              "table": "98b910b6-ac8d-4616-8d45-79d1eca3ed90"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "GetOnNewItems",
+              "connectionName": "shared_sharepointonline"
+            }
+          },
+          "recurrence": {
+            "frequency": "Minute",
+            "interval": 1
+          },
+          "splitOn": "@triggerOutputs()?['body/value']"
+        }
+      },
+      "actions": {
+        "Condition": {
+          "type": "If",
+          "expression": {
+            "or": [
+              {
+                "equals": [
+                  "@triggerBody()?['Operacion/Value']",
+                  "Asignación"
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerBody()?['Operacion/Value']",
+                  "Préstamo"
+                ]
+              }
+            ]
+          },
+          "actions": {
+            "Send_an_email_(V2)": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "emailMessage/To": "@triggerBody()?['Responsable']",
+                  "emailMessage/Subject": "Entrega de Equipos",
+                  "emailMessage/Body": "<p class=\"editor-paragraph\">Hola @{triggerBody()?['Destino']},<br>Se notifica el movimiento realizado del equipo descrito.<br><br>Operación: @{triggerBody()?['Operacion/Value']}<br>Activo: @{triggerBody()?['Activo_Detalle']}<br>Sede: @{triggerBody()?['Sede']}<br>Técnico: @{triggerBody()?['Author/DisplayName']}<br>Fecha Hora: @{triggerBody()?['Created']}<br>Favor de validar o notificar a servicedesk@grupohame.com</p>",
+                  "emailMessage/Cc": "@triggerBody()?['Author/Email']",
+                  "emailMessage/Importance": "Normal"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                  "operationId": "SendEmailV2",
+                  "connectionName": "shared_office365-1"
+                }
+              }
+            }
+          },
+          "else": {
+            "actions": {}
+          },
+          "runAfter": {}
+        }
+      },
+      "description": "Permite recibir o enviar un correo personalizado cada vez que se agregue un elemento nuevo a una lista de SharePoint seleccionada."
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

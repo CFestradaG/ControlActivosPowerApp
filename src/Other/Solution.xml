@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.26082.162" SolutionPackageVersion="9.2" languagecode="3082" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26082.162" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26082.00162">
+<ImportExportXml version="9.2.26084.171" SolutionPackageVersion="9.2" languagecode="3082" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26084.171" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26084.00171">
   <SolutionManifest>
-    <UniqueName>ControlActivosSolution</UniqueName>
+    <UniqueName>ControlActivos</UniqueName>
     <LocalizedNames>
-      <LocalizedName description="ControlActivosSolution" languagecode="3082" />
+      <LocalizedName description="ControlActivos" languagecode="3082" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.0</Version>
+    <Version>1.0.0.3</Version>
     <Managed>0</Managed>
     <Publisher>
-      <UniqueName>FranciscoEstrada</UniqueName>
+      <UniqueName>CruzEstrada</UniqueName>
       <LocalizedNames>
-        <LocalizedName description="Festrada" languagecode="3082" />
+        <LocalizedName description="CE" languagecode="3082" />
       </LocalizedNames>
       <Descriptions />
       <EMailAddress>francisco.estrada.g@gmail.com</EMailAddress>
       <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
-      <CustomizationPrefix>fe</CustomizationPrefix>
-      <CustomizationOptionValuePrefix>12239</CustomizationOptionValuePrefix>
+      <CustomizationPrefix>ce</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>12146</CustomizationOptionValuePrefix>
       <Addresses>
         <Address>
           <AddressNumber>1</AddressNumber>
@@ -78,9 +78,23 @@
       </Addresses>
     </Publisher>
     <RootComponents>
-      <RootComponent type="29" id="{c96422eb-f0b1-f111-aaac-000d3a8aed11}" behavior="0" />
-      <RootComponent type="300" schemaName="fe_controldeactivos_d5da0" behavior="0" />
+      <RootComponent type="29" id="{3ad1d177-1bbd-f111-aaaf-000d3a8aed11}" behavior="0" />
+      <RootComponent type="29" id="{c9306d1f-8254-f011-877a-000d3a4d8373}" behavior="0" />
+      <RootComponent type="300" schemaName="fe_controldeactivos_c72e9" behavior="0" />
     </RootComponents>
-    <MissingDependencies />
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="Cr8ce7f_shared_sharepointonline_4c64e5def4794b61934fcd622b16bef3" solution="Active" id.connectionreferencelogicalname="Cr8ce7f_shared_sharepointonline_4c64e5def4794b61934fcd622b16bef3" />
+        <Dependent type="29" displayName="Notificación Asingación Activos" id="{c9306d1f-8254-f011-877a-000d3a4d8373}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="fe_sharedsharepointonline_2f508" solution="Active" id.connectionreferencelogicalname="fe_sharedsharepointonline_2f508" />
+        <Dependent type="29" displayName="Formato" id="{3ad1d177-1bbd-f111-aaaf-000d3a8aed11}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="new_sharedoffice365_834cb" solution="Active" id.connectionreferencelogicalname="new_sharedoffice365_834cb" />
+        <Dependent type="29" displayName="Notificación Asingación Activos" id="{c9306d1f-8254-f011-877a-000d3a4d8373}" />
+      </MissingDependency>
+    </MissingDependencies>
   </SolutionManifest>
 </ImportExportXml>

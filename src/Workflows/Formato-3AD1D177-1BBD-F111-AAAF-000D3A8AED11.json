@@ -1,0 +1,137 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "fe_sharedsharepointonline_2f508"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "6e8e4025-f67c-4c26-9550-fdeef52cde1f"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "number": {
+                  "title": "xId",
+                  "type": "number",
+                  "x-ms-dynamically-added": true,
+                  "description": "Escriba un número.",
+                  "x-ms-content-hint": "NUMBER"
+                },
+                "file": {
+                  "title": "xAdjunto",
+                  "type": "object",
+                  "x-ms-dynamically-added": true,
+                  "description": "Seleccione un archivo o una imagen.",
+                  "x-ms-content-hint": "FILE",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "contentBytes": {
+                      "type": "string",
+                      "format": "byte"
+                    }
+                  }
+                },
+                "text": {
+                  "title": "xNombre",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Escribir entrada",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "number",
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Agregar_datos_adjuntos": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "06acedd4-62d9-4aeb-8285-49251187dbf0"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "connectionName": "shared_sharepointonline",
+              "operationId": "CreateAttachment"
+            },
+            "parameters": {
+              "dataset": "https://olmecaguatemala.sharepoint.com/sites/ServiciosdeTecnologa",
+              "table": "98b910b6-ac8d-4616-8d45-79d1eca3ed90",
+              "itemId": "@triggerBody()['number']",
+              "displayName": "@triggerBody()['text']",
+              "body": "@triggerBody()?['file']?['contentBytes']"
+            },
+            "authentication": {
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+              "type": "Raw"
+            }
+          }
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "Agregar_datos_adjuntos": [
+              "Succeeded",
+              "Failed"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "410940b3-7030-4834-8aa9-db64ce259912"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "xurl": "@outputs('Agregar_datos_adjuntos')?['body/AbsoluteUri']"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "xurl": {
+                  "title": "xURL",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}
